@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produkcja treści audio-wideo do social media z AI | Portfolio | KAROT</title>
+  <meta name="description" content="Realizacja: generowanie wideo AI, montaż shortów, lektor AI, produkcja filmów 4K do social media i eksport na nośniki.">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <img src="logo-KAROT.svg" alt="Logo KAROT" style="height:32px; width:auto; display:inline-block; vertical-align:middle;">
+      </a>
+      <a href="index.html#portfolio" class="back-link"><i class="fas fa-arrow-left"></i> Powrót do portfolio</a>
+    </div>
+  </header>  
+  <main>
+    <div class="portfolio-meta">
+      <span><i class="fas fa-calendar-alt"></i> 2025</span>
+      <span><i class="fas fa-user"></i> Klient: Marka e-commerce</span>
+      <span><i class="fas fa-tag"></i> Wideo AI, social media, 4K</span>
+    </div>
+    <h1 class="portfolio-title">Produkcja treści audio-wideo do social media z AI</h1>
+    <div class="portfolio-gallery-detail">
+      <a href="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80" class="portfolio-zoom" title="Generowanie wideo AI">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Generowanie wideo AI" loading="lazy">
+      </a>
+      <a href="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=1200&q=80" class="portfolio-zoom" title="Montaż shortów 4K">
+        <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=600&q=80" alt="Montaż shortów 4K" loading="lazy">
+      </a>
+      <a href="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" class="portfolio-zoom" title="Lektor AI i napisy automatyczne">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Lektor AI i napisy automatyczne" loading="lazy">
+      </a>
+    </div>
+    <article>
+      <h2>Opis realizacji</h2>
+      <p>
+        Dla marki e-commerce przygotowaliśmy serię materiałów wideo do social media z wykorzystaniem AI. Projekt obejmował generowanie wideo, montaż shortów (Reels, TikTok), produkcję filmów 4K oraz eksport na nośniki i do internetu.
+      </p>
+      <ul>
+        <li>Generowanie wideo AI i automatyczny montaż</li>
+        <li>Lektor AI w kilku językach, podcasty z tekstu</li>
+        <li>Napisy automatyczne i tłumaczenia</li>
+        <li>Eksport materiałów na pendrive’y i do publikacji online</li>
+      </ul>
+      <h2>Efekt końcowy</h2>
+      <p>
+        Klient zyskał nowoczesne, angażujące treści do social media, gotowe do publikacji na TikTok, Instagram i YouTube, a także wersje na nośnikach fizycznych.
+      </p>
+    </article>
+    <div style="margin-top:2.5rem;">
+      <a href="index.html#portfolio" class="back-link"><i class="fas fa-arrow-left"></i> Powrót do portfolio</a>
+    </div>
+  </main>
+  <div id="lightbox-portfolio">
+    <span class="close-lightbox" title="Zamknij">&times;</span>
+    <img src="" alt="Powiększenie">
+  </div>
+  <script>
+    document.querySelectorAll('.portfolio-zoom').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const lightbox = document.getElementById('lightbox-portfolio');
+        const img = lightbox.querySelector('img');
+        img.src = this.href;
+        img.alt = this.title || this.querySelector('img').alt;
+        lightbox.classList.add('active');
+      });
+    });
+    document.querySelector('.close-lightbox').addEventListener('click', () => {
+      document.getElementById('lightbox-portfolio').classList.remove('active');
+    });
+    document.getElementById('lightbox-portfolio').addEventListener('click', (e) => {
+      if(e.target === e.currentTarget) {
+        e.currentTarget.classList.remove('active');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if(e.key === "Escape") {
+        document.getElementById('lightbox-portfolio').classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

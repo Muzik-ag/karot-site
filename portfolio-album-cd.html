@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kolekcjonerski album muzyczny na CD | Portfolio | KAROT</title>
+  <meta name="description" content="Przykład realizacji: produkcja i nadruk płyt CD, authoring i digitalizacja nagrań z taśm analogowych dla zespołu muzycznego.">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <img src="logo-KAROT.svg" alt="Logo KAROT" style="height:32px; width:auto; display:inline-block; vertical-align:middle;">
+      </a>
+      <a href="index.html#portfolio" class="back-link"><i class="fas fa-arrow-left"></i> Powrót do portfolio</a>
+    </div>
+  </header>  
+  <main>
+    <div class="portfolio-meta">
+      <span><i class="fas fa-calendar-alt"></i> 2024</span>
+      <span><i class="fas fa-user"></i> Zespół muzyczny XYZ</span>
+      <span><i class="fas fa-tag"></i> Produkcja CD, authoring, digitalizacja</span>
+    </div>
+    <h1 class="portfolio-title">Kolekcjonerski album muzyczny na CD</h1>
+    <div class="portfolio-gallery-detail">
+      <a href="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80" class="portfolio-zoom" title="Okładka albumu CD">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Okładka albumu CD" loading="lazy">
+      </a>
+      <a href="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80" class="portfolio-zoom" title="Płyta CD z nadrukiem">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Płyta CD z nadrukiem" loading="lazy">
+      </a>
+      <a href="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80" class="portfolio-zoom" title="Opakowanie digipack">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Opakowanie digipack" loading="lazy">
+      </a>
+    </div>
+    <article>
+      <h2>Opis realizacji</h2>
+      <p>
+        Dla zespołu muzycznego XYZ zrealizowaliśmy kompleksową produkcję kolekcjonerskiego albumu na płycie CD. Projekt obejmował digitalizację nagrań z taśm analogowych, mastering, authoring oraz przygotowanie interaktywnego menu na krążku.
+      </p>
+      <ul>
+        <li>Profesjonalny nadruk UV na płytach CD</li>
+        <li>Projekt i druk okładki oraz opakowania typu digipack</li>
+        <li>Przygotowanie bookletu z tekstami i grafikami</li>
+        <li>Digitalizacja i remastering nagrań z kaset magnetofonowych</li>
+      </ul>
+      <h2>Efekt końcowy</h2>
+      <p>
+        Album został wydany w limitowanej serii, a każdy egzemplarz wyróżnia się wysoką jakością wykonania oraz indywidualnym numerem kolekcjonerskim. Klient otrzymał również wersję cyfrową nagrań do publikacji online.
+      </p>
+    </article>
+    <div style="margin-top:2.5rem;">
+      <a href="index.html#portfolio" class="back-link"><i class="fas fa-arrow-left"></i> Powrót do portfolio</a>
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox-portfolio">
+    <span class="close-lightbox" title="Zamknij">&times;</span>
+    <img src="" alt="Powiększenie">
+  </div>
+
+  <script>
+    // Lightbox portfolio
+    document.querySelectorAll('.portfolio-zoom').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const lightbox = document.getElementById('lightbox-portfolio');
+        const img = lightbox.querySelector('img');
+        img.src = this.href;
+        img.alt = this.title || this.querySelector('img').alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    // Zamknięcie lightbox
+    document.querySelector('.close-lightbox').addEventListener('click', () => {
+      document.getElementById('lightbox-portfolio').classList.remove('active');
+    });
+
+    document.getElementById('lightbox-portfolio').addEventListener('click', (e) => {
+      if(e.target === e.currentTarget) {
+        e.currentTarget.classList.remove('active');
+      }
+    });
+
+    // Zamknięcie przez ESC
+    document.addEventListener('keydown', (e) => {
+      if(e.key === "Escape") {
+        document.getElementById('lightbox-portfolio').classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
