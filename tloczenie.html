@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profesjonalne tłoczenie płyt CD, DVD, Blu-ray i winyli od KAROT. Najwyższa jakość nadruku offsetowego, duplikacja danych oraz produkcja opakowań i bookletów.">
+    <meta name="keywords" content="tłoczenie płyt, nadruk offsetowy, CD, DVD, Blu-ray, winyle, duplikacja danych, produkcja opakowań, booklet">
+    <meta name="author" content="KAROT">
+    <meta name="robots" content="index, follow">
+    <title>Tłoczenie płyt CD, DVD, Blu-ray i winyli | Nadruk offsetowy | KAROT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/favicon.ico">
+    <style>
+        /* Style dla podstrony tłoczenia płyt */
+        .subpage-hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('img/tloczenie-hero-bg.jpg') center/cover no-repeat;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature-card {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            cursor: pointer;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1100;
+            padding: 50px;
+            text-align: center;
+            overflow: auto;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--white-color);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1101;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .product-card {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .product-info p {
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: var(--white-color);
+            padding: 60px 0;
+            text-align: center;
+            margin: 60px 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .cta-section h2 {
+            color: var(--white-color);
+            margin-bottom: 20px;
+        }
+        
+        .cta-section h2:after {
+            background: var(--white-color);
+        }
+        
+        .cta-section p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .btn-white {
+            background-color: var(--white-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-white:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial-box {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .testimonial-box:before {
+            content: '\201C';
+            font-size: 80px;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            color: var(--secondary-color);
+            opacity: 0.2;
+        }
+        
+        @media (max-width: 768px) {
+            .modal {
+                padding: 20px;
+            }
+            
+            .close {
+                top: 10px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body id="app">
+    <header class="sticky-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo-karot.svg" alt="KAROT" width="130" height="65"></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#o-firmie">O firmie</a></li>
+                    <li><a href="index.html#uslugi">Usługi</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#cennik">Cennik</a></li>
+                    <li><a href="index.html#opinie">Opinie</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="index.html#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="cta-button">
+                <a href="index.html#kontakt" class="btn btn-primary">Zamów wycenę</a>
+            </div>
+            <div class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="start" class="hero subpage-hero">
+        <div class="container">
+            <h1>Tłoczenie płyt CD, DVD, Blu-ray i winyli</h1>
+            <p>Profesjonalne tłoczenie i nadruk offsetowy dla muzyków, firm i instytucji</p>
+            <a href="index.html#kontakt" class="btn btn-primary">Darmowa konsultacja</a>
+        </div>
+    </section>
+
+    <section class="about-service">
+        <div class="container">
+            <h2>Kompleksowe usługi tłoczenia płyt dla Twojego projektu</h2>
+            <p class="section-intro">W KAROT oferujemy pełen zakres usług związanych z tłoczeniem płyt CD, DVD, Blu-ray i winyli. Dzięki najnowocześniejszym technologiom i wieloletniemu doświadczeniu, dostarczamy produkty najwyższej jakości, które spełniają oczekiwania nawet najbardziej wymagających klientów.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-compact-disc"></i>
+                    </div>
+                    <h3>Tłoczenie płyt CD</h3>
+                    <p>Profesjonalne tłoczenie płyt CD z nadrukiem offsetowym. Idealne rozwiązanie dla muzyków, firm i instytucji. Nakłady od 300 sztuk.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Tłoczenie płyt DVD i Blu-ray</h3>
+                    <p>Wysokiej jakości tłoczenie płyt DVD i Blu-ray z filmami, prezentacjami i materiałami szkoleniowymi. Nadruk offsetowy w pełnym kolorze.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-record-vinyl"></i>
+                    </div>
+                    <h3>Tłoczenie płyt winylowych</h3>
+                    <p>Profesjonalne tłoczenie płyt winylowych w formatach 7", 10" i 12". Różne gramatury i kolory winylu do wyboru.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <h3>Duplikacja danych</h3>
+                    <p>Ekonomiczna duplikacja danych dla mniejszych nakładów (10-300 sztuk). Nadruk cyfrowy lub sitodruk na płytach.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>Produkcja opakowań</h3>
+                    <p>Kompleksowa produkcja opakowań do płyt: digipacki, ekopacki, pudełka jewel case, koperty papierowe i foliowe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Druk bookletów</h3>
+                    <p>Profesjonalny druk bookletów i wkładek do płyt. Różne formaty, gramatury papieru i opcje wykończenia.</p>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h2>Dlaczego warto wybrać profesjonalne tłoczenie płyt?</h2>
+                <p>Profesjonalne tłoczenie płyt to inwestycja, która przynosi wymierne korzyści dla Twojego projektu:</p>
+                <ul>
+                    <li><strong>Najwyższa jakość dźwięku i obrazu</strong> - tłoczone płyty charakteryzują się doskonałą jakością odtwarzania, co jest szczególnie ważne dla projektów muzycznych i filmowych.</li>
+                    <li><strong>Trwałość i niezawodność</strong> - płyty tłoczone są znacznie bardziej odporne na uszkodzenia i upływ czasu niż płyty nagrywane (wypalane).</li>
+                    <li><strong>Profesjonalny wygląd</strong> - nadruk offsetowy na płytach tłoczonych zapewnia najwyższą jakość i trwałość grafiki, co pozytywnie wpływa na odbiór Twojego projektu.</li>
+                    <li><strong>Kompleksowa realizacja</strong> - od masteringu, przez tłoczenie, po produkcję opakowań - wszystko w jednym miejscu, co oszczędza Twój czas i pieniądze.</li>
+                    <li><strong>Opłacalność przy większych nakładach</strong> - tłoczenie staje się bardziej ekonomiczne niż duplikacja przy nakładach powyżej 300 sztuk.</li>
+                </ul>
+            </div>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="img/cd-tloczenie.jpg" alt="Tłoczone płyty CD z nadrukiem" onclick="openModal(this.src, 'Tłoczone płyty CD z nadrukiem offsetowym')">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/vinyl-tloczenie.jpg" alt="Tłoczone płyty winylowe" onclick="openModal(this.src, 'Tłoczone płyty winylowe w różnych kolorach')">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/digipack-produkcja.jpg" alt="Produkcja digipacków" onclick="openModal(this.src, 'Produkcja digipacków z nadrukiem offsetowym')">
+                </div>
+            </div>
+            
+            <!-- Modal dla powiększania zdjęć -->
+            <div id="imageModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImage">
+                <div id="modalCaption" style="color: white; margin-top: 20px; font-size: 1.2rem;"></div>
+            </div>
+            
+            <div class="content-block">
+                <h2>Nasze technologie tłoczenia płyt</h2>
+                <p>W KAROT wykorzystujemy najnowocześniejsze technologie tłoczenia płyt, aby zapewnić najwyższą jakość i elastyczność produkcji:</p>
+                
+                <h3>Tłoczenie płyt CD</h3>
+                <p>Proces tłoczenia płyt CD rozpoczyna się od przygotowania matrycy (glass master), która służy jako wzór do produkcji. Następnie, przy użyciu wysokiego ciśnienia i temperatury, tworzone są kolejne płyty. Ta metoda zapewnia identyczną jakość każdej płyty oraz doskonałe odwzorowanie dźwięku. Nadruk offsetowy na płytach gwarantuje najwyższą jakość grafiki, trwałość kolorów i odporność na zarysowania.</p>
+                
+                <h3>Tłoczenie płyt DVD i Blu-ray</h3>
+                <p>Tłoczenie płyt DVD i Blu-ray wymaga jeszcze większej precyzji ze względu na gęstość zapisu danych. Nasze zaawansowane linie produkcyjne zapewniają bezbłędne odwzorowanie zawartości i najwyższą jakość obrazu. Oferujemy tłoczenie płyt DVD-5, DVD-9 oraz Blu-ray o pojemności 25GB i 50GB, co pozwala na umieszczenie nawet najbardziej rozbudowanych projektów.</p>
+                
+                <h3>Tłoczenie płyt winylowych</h3>
+                <p>Renesans winyli sprawił, że tłoczenie płyt analogowych stało się znów popularne. Nasza tłocznia winyli wykorzystuje zarówno tradycyjne, sprawdzone metody, jak i nowoczesne rozwiązania technologiczne, aby zapewnić najwyższą jakość dźwięku. Oferujemy tłoczenie winyli w formatach 7", 10" i 12", w różnych gramaturach (140g, 180g) oraz kolorach (czarny, kolorowy, przezroczysty, marmurkowy).</p>
+                
+                <h3>Duplikacja płyt</h3>
+                <p>Dla mniejszych nakładów (10-300 sztuk) oferujemy ekonomiczną alternatywę w postaci duplikacji płyt. Proces ten polega na nagrywaniu danych na płyty CD-R, DVD-R lub BD-R przy użyciu profesjonalnych duplikatorów. Choć jakość nagrania jest nieco niższa niż w przypadku tłoczenia, dla wielu zastosowań jest w pełni wystarczająca. Na płyty nanoszone są profesjonalne nadruki metodą sitodruku lub druku cyfrowego.</p>
+            </div>
+            
+            <h2>Nasze bestsellery</h2>
+            <p class="section-intro">Poznaj nasze najpopularniejsze produkty z zakresu tłoczenia płyt</p>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/cd-digipack.jpg" alt="CD w digipacku">
+                    </div>
+                    <div class="product-info">
+                        <h3>CD w digipacku 4-panelowym</h3>
+                        <p>Tłoczona płyta CD z nadrukiem offsetowym w eleganckim digipacku 4-panelowym z matowym uszlachetnieniem.</p>
+                        <div class="price">od 7,90 zł/szt.*</div>
+                        <a href="index.html#kontakt" class="btn btn-primary">Zapytaj o wycenę</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/vinyl-12inch.jpg" alt="Płyta winylowa 12 cali">
+                    </div>
+                    <div class="product-info">
+                        <h3>Płyta winylowa 12" (180g)</h3>
+                        <p>Wysokiej jakości płyta winylowa 12" o gramaturze 180g z kolorową etykietą i opakowaniem.</p>
+                        <div class="price">od 39 zł/szt.*</div>
+                        <a href="index.html#kontakt" class="btn btn-primary">Zapytaj o wycenę</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/dvd-box.jpg" alt="DVD w pudełku">
+                    </div>
+                    <div class="product-info">
+                        <h3>DVD-5 w pudełku Amaray</h3>
+                        <p>Tłoczona płyta DVD-5 z nadrukiem offsetowym w standardowym pudełku Amaray z okładką i bookletem.</p>
+                        <div class="price">od 6,50 zł/szt.*</div>
+                        <a href="index.html#kontakt" class="btn btn-primary">Zapytaj o wycenę</a>
+                    </div>
+                </div>
+            </div>
+            <p class="small-text" style="text-align: center; font-size: 0.9rem; color: #666;">* Ceny orientacyjne przy zamówieniu minimum 300 sztuk dla CD/DVD i 100 sztuk dla winyli. Skontaktuj się z nami, aby otrzymać indywidualną wycenę.</p>
+            
+            <div class="testimonial-box">
+                <p>"Współpracujemy z KAROT przy wydawaniu naszych albumów muzycznych od ponad 5 lat. Jakość tłoczenia płyt i nadruku zawsze stoi na najwyższym poziomie. Szczególnie doceniamy profesjonalne doradztwo na etapie przygotowania projektu oraz terminowość realizacji. Polecam każdemu artyście i wytwórni, która ceni sobie jakość i niezawodność."</p>
+                <p style="text-align: right; font-weight: 500; margin-top: 20px;">- Marek Kowalski, Producent muzyczny, SoundArt Records</p>
+            </div>
+            
+            <div class="cta-section">
+                <h2>Zamów profesjonalne tłoczenie płyt już dziś!</h2>
+                <p>Skontaktuj się z nami, aby omówić swój projekt i otrzymać indywidualną wycenę. Oferujemy atrakcyjne rabaty przy większych nakładach oraz kompleksową obsługę od masteringu po dostawę gotowego produktu.</p>
+                <a href="index.html#kontakt" class="btn btn-white">Skontaktuj się z nami</a>
+            </div>
+            
+            <div class="content-block">
+                <h2>Często zadawane pytania</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Jaki jest minimalny nakład przy tłoczeniu płyt?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Minimalny nakład przy tłoczeniu płyt CD i DVD to 300 sztuk, dla płyt Blu-ray 500 sztuk, a dla płyt winylowych 100 sztuk. Dla mniejszych nakładów oferujemy usługę duplikacji (nagrywania) płyt, która jest bardziej ekonomiczna przy niewielkich ilościach.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Jaki jest czas realizacji zamówienia?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standardowy czas realizacji zamówienia to 2-3 tygodnie dla płyt CD i DVD, 3-4 tygodnie dla płyt Blu-ray oraz 8-10 tygodni dla płyt winylowych, licząc od momentu zatwierdzenia projektu i dostarczenia materiałów. W przypadku duplikacji czas realizacji wynosi 3-5 dni roboczych.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Jakie materiały należy dostarczyć do tłoczenia płyt?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Do tłoczenia płyt CD/DVD/Blu-ray potrzebujemy plików audio/wideo w odpowiednim formacie (WAV, AIFF dla audio; nieskompresowane pliki wideo) oraz projekty graficzne nadruku na płytę i opakowania w formacie PDF (CMYK, 300 dpi, z 3mm spadami). W przypadku płyt winylowych wymagamy plików audio w wysokiej rozdzielczości (24bit/96kHz) oraz projektu etykiety i okładki. Szczegółową specyfikację techniczną dostarczamy po złożeniu zamówienia.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Czy oferujecie mastering audio przed tłoczeniem?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak, oferujemy profesjonalne usługi masteringu audio, które są szczególnie ważne przed tłoczeniem płyt winylowych. Nasz zespół doświadczonych inżynierów dźwięku zadba o to, aby Twoje nagrania brzmiały jak najlepiej na wybranym nośniku. Mastering do płyt winylowych wymaga specjalnego podejścia ze względu na fizyczne ograniczenia tego formatu, dlatego zawsze zalecamy skorzystanie z tej usługi przed tłoczeniem winyli.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo-karot-white.svg" alt="KAROT" width="130" height="65"></a>
+                    <p>Kompleksowe usługi multimedialne dla firm, artystów i instytucji</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Szybkie linki</h3>
+                    <ul>
+                        <li><a href="index.html#o-firmie">O firmie</a></li>
+                        <li><a href="index.html#uslugi">Usługi</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#cennik">Cennik</a></li>
+                        <li><a href="index.html#opinie">Opinie</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Nasze usługi</h3>
+                    <ul>
+                        <li><a href="gadzety.html">Gadżety reklamowe</a></li>
+                        <li><a href="druk.html">Druk materiałów</a></li>
+                        <li><a href="tloczenie.html">Tłoczenie płyt</a></li>
+                        <li><a href="video.html">Produkcja wideo</a></li>
+                        <li><a href="marketing.html">Marketing AI</a></li>
+                        <li><a href="digitalizacja.html">Digitalizacja</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Zapisz się, aby otrzymywać najnowsze informacje i promocje</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Twój adres email" required>
+                        <button type="submit" class="btn btn-primary">Zapisz się</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 KAROT. Wszelkie prawa zastrzeżone.</p>
+                </div>
+                <div class="footer-legal">
+                    <ul>
+                        <li><a href="privacy.html">Polityka prywatności</a></li>
+                        <li><a href="terms.html">Regulamin</a></li>
+                        <li><a href="cookies.html">Polityka cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+        // Obsługa menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const mainNav = document.querySelector('.main-nav');
+            const navLinks = document.querySelectorAll('.main-nav ul li a');
+            
+            if (hamburger && mainNav) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    mainNav.classList.toggle('open');
+                    document.body.style.overflow = mainNav.classList.contains('open') ? 'hidden' : '';
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('open')) {
+                        hamburger.classList.remove('active');
+                        mainNav.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+            
+            // Obsługa FAQ
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Zamknij wszystkie inne elementy
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                            const toggle = otherItem.querySelector('.faq-toggle i');
+                            if (toggle) toggle.className = 'fas fa-plus';
+                        }
+                    });
+                    
+                    // Przełącz stan aktualnego elementu
+                    item.classList.toggle('active');
+                    
+                    // Zmień ikonę
+                    const toggle = item.querySelector('.faq-toggle i');
+                    if (toggle) {
+                        toggle.className = item.classList.contains('active') ? 
+                            'fas fa-minus' : 'fas fa-plus';
+                    }
+                });
+            });
+            
+            // Obsługa przycisku powrotu do góry
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                backToTopButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+        
+        // Funkcje do obsługi modalu ze zdjęciami
+        function openModal(src, caption) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('modalCaption');
+            
+            modal.style.display = "block";
+            modalImg.src = src;
+            captionText.innerHTML = caption;
+            
+            // Zamknij modal po kliknięciu gdziekolwiek
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal || e.target === modalImg) {
+                    closeModal();
+                }
+            });
+            
+            // Zamknij modal po 10 sekundach
+            setTimeout(closeModal, 10000);
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+        }
+    </script>
+</body>
+</html>

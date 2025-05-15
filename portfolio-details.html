@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Szczegółowe portfolio projektów KAROT - gadżety reklamowe, druk materiałów, tłoczenie płyt, produkcja wideo, marketing AI i digitalizacja. Zobacz nasze realizacje dla firm, artystów i instytucji.">
+    <meta name="keywords" content="portfolio, realizacje, projekty, gadżety reklamowe, druk, tłoczenie płyt, produkcja wideo, marketing AI, digitalizacja, KAROT">
+    <meta name="author" content="KAROT">
+    <meta name="robots" content="index, follow">
+    <title>Szczegóły projektów KAROT | Nasze realizacje | Gadżety, druk, tłoczenie płyt, wideo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/favicon.ico">
+</head>
+<body id="app">
+    <header class="sticky-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo-karot.svg" alt="KAROT" width="130" height="65"></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="index.html#o-firmie">O firmie</a></li>
+                    <li><a href="index.html#uslugi">Usługi</a></li>
+                    <li><a href="index.html#portfolio" class="active">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#cennik">Cennik</a></li>
+                    <li><a href="index.html#opinie">Opinie</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="index.html#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="cta-button">
+                <a href="index.html#kontakt" class="btn btn-primary">Zamów wycenę</a>
+            </div>
+            <div class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="start" class="hero subpage-hero">
+        <div class="container">
+            <h1>Szczegóły naszych realizacji</h1>
+            <p>Poznaj nasze projekty i przekonaj się o jakości naszych usług</p>
+            <a href="index.html#kontakt" class="btn btn-primary">Skontaktuj się z nami</a>
+        </div>
+    </section>
+
+    <section class="portfolio-details">
+        <div class="container">
+            <h2 class="section-title">Nasze wybrane realizacje</h2>
+            <p class="section-intro">Poniżej prezentujemy szczegółowe opisy wybranych projektów, które zrealizowaliśmy dla naszych klientów. Każdy z nich to unikalne rozwiązanie dopasowane do indywidualnych potrzeb i oczekiwań.</p>
+            
+            <!-- Podsekcja 1: Gadżety reklamowe -->
+            <div class="portfolio-detail-section">
+                <h2>Pendrive'y reklamowe dla Tech Corp</h2>
+                <div class="portfolio-detail-content">
+                    <div class="portfolio-detail-images">
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-gadzety1.jpg" alt="Pendrive drewniany z logo" onclick="openModal(this.src, 'Pendrive drewniany z grawerowanym logo Tech Corp')">
+                        </div>
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-gadzety2.jpg" alt="Zestaw gadżetów reklamowych" onclick="openModal(this.src, 'Kompletny zestaw gadżetów reklamowych dla Tech Corp')">
+                        </div>
+                    </div>
+                    <div class="portfolio-detail-text">
+                        <span class="portfolio-category">Gadżety reklamowe</span>
+                        <p>Seria ekologicznych pendrive'ów z drewna klonowego z grawerowanym logo firmy. Projekt obejmował również kompleksowy zestaw gadżetów na konferencję branżową.</p>
+                        
+                        <h3>Wyzwanie</h3>
+                        <p>Tech Corp potrzebowało wyróżniających się gadżetów reklamowych na międzynarodową konferencję technologiczną. Gadżety miały odzwierciedlać ekologiczne wartości firmy i jednocześnie być praktyczne dla uczestników konferencji.</p>
+                        
+                        <h3>Rozwiązanie</h3>
+                        <p>Zaprojektowaliśmy serię pendrive'ów z drewna klonowego z grawerowanym logo firmy. Każdy pendrive miał pojemność 16GB i był zapakowany w ekologiczne opakowanie. Dodatkowo przygotowaliśmy kompletny zestaw gadżetów obejmujący notatniki z recyklingu, bambusowe długopisy i bawełniane torby.</p>
+                        
+                        <h3>Rezultaty</h3>
+                        <p>Gadżety zostały bardzo dobrze przyjęte przez uczestników konferencji. Tech Corp odnotowało 30% wzrost zainteresowania swoimi usługami po wydarzeniu, a ekologiczne pendrive'y stały się rozpoznawalnym elementem marki.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Podsekcja 2: Druk materiałów -->
+            <div class="portfolio-detail-section">
+                <h2>Identyfikacja wizualna dla StartUp Inc.</h2>
+                <div class="portfolio-detail-content">
+                    <div class="portfolio-detail-images">
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-druk1.jpg" alt="Wizytówki firmowe" onclick="openModal(this.src, 'Wizytówki i papeteria firmowa dla StartUp Inc.')">
+                        </div>
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-druk2.jpg" alt="Katalog produktowy" onclick="openModal(this.src, 'Katalog produktowy z efektem lakieru wybiórczego UV')">
+                        </div>
+                    </div>
+                    <div class="portfolio-detail-text">
+                        <span class="portfolio-category">Druk materiałów</span>
+                        <p>Kompleksowy projekt identyfikacji wizualnej obejmujący wizytówki, papier firmowy, teczki, katalogi produktowe i materiały promocyjne z wykorzystaniem lakieru wybiórczego UV.</p>
+                        
+                        <h3>Wyzwanie</h3>
+                        <p>StartUp Inc. potrzebowało spójnej identyfikacji wizualnej, która pomoże im wyróżnić się na rynku i zbudować profesjonalny wizerunek. Firma działała w konkurencyjnej branży technologicznej i potrzebowała materiałów, które podkreślą jej innowacyjny charakter.</p>
+                        
+                        <h3>Rozwiązanie</h3>
+                        <p>Stworzyliśmy kompleksowy system identyfikacji wizualnej, który obejmował wizytówki na papierze 350g/m² z lakierem wybiórczym UV, papier firmowy, teczki ofertowe, katalogi produktowe oraz materiały promocyjne. Wszystkie elementy zostały zaprojektowane w spójnej stylistyce, z wykorzystaniem nowoczesnych technik druku i uszlachetnień.</p>
+                        
+                        <h3>Rezultaty</h3>
+                        <p>Nowa identyfikacja wizualna pomogła StartUp Inc. zbudować profesjonalny wizerunek i zwiększyć rozpoznawalność marki. Materiały drukowane spotkały się z bardzo pozytywnym odbiorem klientów i partnerów biznesowych, co przełożyło się na wzrost liczby nowych kontraktów o 45% w ciągu pierwszych 6 miesięcy.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Podsekcja 3: Tłoczenie płyt -->
+            <div class="portfolio-detail-section">
+                <h2>Album muzyczny dla zespołu Melodia</h2>
+                <div class="portfolio-detail-content">
+                    <div class="portfolio-detail-images">
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-tloczenie1.jpg" alt="Płyta CD z nadrukiem" onclick="openModal(this.src, 'Płyta CD z nadrukiem offsetowym dla zespołu Melodia')">
+                        </div>
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-tloczenie2.jpg" alt="Digipack z płytą" onclick="openModal(this.src, 'Digipack z płytą CD i 16-stronicowym bookletem')">
+                        </div>
+                    </div>
+                    <div class="portfolio-detail-text">
+                        <span class="portfolio-category">Tłoczenie płyt</span>
+                        <p>Tłoczenie płyt CD z nadrukiem offsetowym, produkcja digipacków 6-panelowych z lakierem matowym oraz 16-stronicowych bookletów. Nakład 1000 sztuk.</p>
+                        
+                        <h3>Wyzwanie</h3>
+                        <p>Zespół Melodia planował wydanie swojego debiutanckiego albumu i potrzebował wysokiej jakości płyt CD z profesjonalnym opakowaniem, które odzwierciedlałoby artystyczny charakter ich muzyki. Ważne było, aby produkt finalny wyróżniał się na półce sklepowej i przyciągał uwagę potencjalnych słuchaczy.</p>
+                        
+                        <h3>Rozwiązanie</h3>
+                        <p>Zrealizowaliśmy kompleksowy projekt obejmujący tłoczenie 1000 płyt CD z pełnokolorowym nadrukiem offsetowym, produkcję 6-panelowych digipacków z lakierem matowym oraz 16-stronicowych bookletów zawierających teksty piosenek i profesjonalne zdjęcia zespołu. Całość została zaprojektowana w spójnej stylistyce, podkreślającej unikalny styl muzyczny zespołu.</p>
+                        
+                        <h3>Rezultaty</h3>
+                        <p>Album spotkał się z entuzjastycznym przyjęciem zarówno ze strony fanów, jak i krytyków muzycznych. Wysoka jakość wykonania i estetyka opakowania były często wymieniane jako dodatkowe atuty wydawnictwa. Cały nakład został wyprzedany w ciągu 3 miesięcy, co skłoniło zespół do zamówienia dodruku kolejnych 500 sztuk.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Podsekcja 4: Produkcja wideo -->
+            <div class="portfolio-detail-section">
+                <h2>Kampania wideo dla Fashion Brand</h2>
+                <div class="portfolio-detail-content">
+                    <div class="portfolio-detail-images">
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-video1.jpg" alt="Produkcja wideo" onclick="openModal(this.src, 'Kadr z filmu promocyjnego dla Fashion Brand')">
+                        </div>
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-video2.jpg" alt="Animacja produktowa" onclick="openModal(this.src, 'Animacja produktowa z wykorzystaniem AI')">
+                        </div>
+                    </div>
+                    <div class="portfolio-detail-text">
+                        <span class="portfolio-category">Produkcja wideo</span>
+                        <p>Seria filmów promocyjnych i animacji produktowych do mediów społecznościowych z wykorzystaniem technologii AI. Projekt obejmował 15 krótkich form wideo.</p>
+                        
+                        <h3>Wyzwanie</h3>
+                        <p>Fashion Brand potrzebowało serii angażujących materiałów wideo do promocji nowej kolekcji w mediach społecznościowych. Materiały miały być dostosowane do różnych platform (Instagram, TikTok, YouTube) i skutecznie prezentować produkty w atrakcyjny, nowoczesny sposób.</p>
+                        
+                        <h3>Rozwiązanie</h3>
+                        <p>Stworzyliśmy kompleksową kampanię wideo składającą się z 15 krótkich form dostosowanych do różnych platform społecznościowych. Wykorzystaliśmy technologię AI do generowania niektórych elementów wizualnych oraz do optymalizacji procesu produkcji. Każdy materiał był starannie zaprojektowany, aby podkreślić unikalne cechy produktów i zachować spójność z identyfikacją wizualną marki.</p>
+                        
+                        <h3>Rezultaty</h3>
+                        <p>Kampania wideo przyniosła imponujące rezultaty: 300% wzrost zaangażowania w mediach społecznościowych, 45% wzrost ruchu na stronie internetowej oraz 25% wzrost sprzedaży online w porównaniu do poprzedniej kolekcji. Materiały wideo zostały również wykorzystane w reklamach displayowych, co dodatkowo zwiększyło ich zasięg.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Podsekcja 5: Marketing AI -->
+            <div class="portfolio-detail-section">
+                <h2>Automatyzacja marketingu dla E-commerce</h2>
+                <div class="portfolio-detail-content">
+                    <div class="portfolio-detail-images">
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-marketing1.jpg" alt="Analityka AI" onclick="openModal(this.src, 'Dashboard analityczny kampanii marketingowej')">
+                        </div>
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-marketing2.jpg" alt="Chatbot AI" onclick="openModal(this.src, 'Chatbot AI zintegrowany ze stroną e-commerce')">
+                        </div>
+                    </div>
+                    <div class="portfolio-detail-text">
+                        <span class="portfolio-category">Marketing AI</span>
+                        <p>Wdrożenie systemu automatyzacji marketingu z wykorzystaniem AI, obejmującego chatbota, personalizowane kampanie e-mail i analizę zachowań klientów.</p>
+                        
+                        <h3>Wyzwanie</h3>
+                        <p>Sklep e-commerce zmagał się z wysokim współczynnikiem porzuconych koszyków, niską konwersją i ograniczonymi zasobami zespołu marketingowego. Potrzebowali rozwiązania, które zautomatyzuje procesy marketingowe, poprawi obsługę klienta i zwiększy sprzedaż bez konieczności zatrudniania dodatkowych pracowników.</p>
+                        
+                        <h3>Rozwiązanie</h3>
+                        <p>Wdrożyliśmy kompleksowy system automatyzacji marketingu oparty na sztucznej inteligencji. System obejmował: inteligentnego chatbota obsługującego klientów 24/7, personalizowane kampanie e-mail oparte na zachowaniach użytkowników, system rekomendacji produktów oraz zaawansowaną analitykę umożliwiającą śledzenie efektywności działań w czasie rzeczywistym.</p>
+                        
+                        <h3>Rezultaty</h3>
+                        <p>W ciągu pierwszych 3 miesięcy po wdrożeniu, sklep odnotował: 35% spadek liczby porzuconych koszyków, 28% wzrost współczynnika konwersji, 42% wzrost średniej wartości zamówienia oraz 65% redukcję czasu poświęcanego przez zespół na rutynowe zadania marketingowe. Dodatkowo, chatbot obsługiwał skutecznie 78% zapytań klientów bez konieczności interwencji człowieka.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Podsekcja 6: Digitalizacja -->
+            <div class="portfolio-detail-section">
+                <h2>Archiwizacja materiałów dla Muzeum Historii</h2>
+                <div class="portfolio-detail-content">
+                    <div class="portfolio-detail-images">
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-digitalizacja1.jpg" alt="Digitalizacja archiwum" onclick="openModal(this.src, 'Proces digitalizacji materiałów archiwalnych')">
+                        </div>
+                        <div class="portfolio-image">
+                            <img src="img/portfolio-digitalizacja2.jpg" alt="Cyfrowe archiwum" onclick="openModal(this.src, 'Cyfrowe archiwum z systemem katalogowania')">
+                        </div>
+                    </div>
+                    <div class="portfolio-detail-text">
+                        <span class="portfolio-category">Digitalizacja</span>
+                        <p>Digitalizacja kolekcji historycznych nagrań VHS i audio z lat 1960-1990. Projekt obejmował również restaurację materiałów i stworzenie cyfrowego archiwum.</p>
+                        
+                        <h3>Wyzwanie</h3>
+                        <p>Muzeum Historii posiadało obszerną kolekcję historycznych nagrań VHS i audio z lat 1960-1990, które były zagrożone degradacją i utratą cennych materiałów. Instytucja potrzebowała kompleksowego rozwiązania do digitalizacji, restauracji i archiwizacji tych materiałów, które umożliwiłoby ich zachowanie dla przyszłych pokoleń oraz ułatwiło dostęp do zbiorów.</p>
+                        
+                        <h3>Rozwiązanie</h3>
+                        <p>Przeprowadziliśmy kompleksowy proces digitalizacji obejmujący: profesjonalne przegranie ponad 500 kaset VHS i 300 kaset audio na formaty cyfrowe, restaurację materiałów (poprawa jakości obrazu i dźwięku, redukcja szumów, stabilizacja obrazu), stworzenie systemu katalogowania z metadanymi oraz implementację cyfrowego archiwum z interfejsem umożliwiającym łatwe wyszukiwanie i przeglądanie materiałów.</p>
+                        
+                        <h3>Rezultaty</h3>
+                        <p>Dzięki digitalizacji, muzeum zyskało trwałe cyfrowe kopie wszystkich materiałów, zabezpieczając je przed degradacją. Jakość zdigitalizowanych materiałów często przewyższała oryginały dzięki zastosowanym technikom restauracji. Nowy system archiwizacji umożliwił pracownikom muzeum i badaczom łatwy dostęp do zbiorów, co przyczyniło się do zwiększenia wykorzystania materiałów w wystawach i publikacjach o 60%.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal dla powiększania zdjęć -->
+            <div id="imageModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImage">
+                <div id="modalCaption" class="modal-caption"></div>
+            </div>
+            
+            <div class="cta-section">
+                <h2>Zrealizujmy razem Twój projekt!</h2>
+                <p>Masz pomysł na projekt lub potrzebujesz profesjonalnego wsparcia w realizacji swoich celów marketingowych? Skontaktuj się z nami, aby omówić szczegóły i otrzymać indywidualną wycenę.</p>
+                <a href="index.html#kontakt" class="btn btn-white">Skontaktuj się z nami</a>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo-karot-white.svg" alt="KAROT" width="130" height="65"></a>
+                    <p>Kompleksowe usługi multimedialne dla firm, artystów i instytucji</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Szybkie linki</h3>
+                    <ul>
+                        <li><a href="index.html">Strona główna</a></li>
+                        <li><a href="index.html#o-firmie">O firmie</a></li>
+                        <li><a href="index.html#uslugi">Usługi</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#cennik">Cennik</a></li>
+                        <li><a href="index.html#opinie">Opinie</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Nasze usługi</h3>
+                    <ul>
+                        <li><a href="gadzety.html">Gadżety reklamowe</a></li>
+                        <li><a href="druk.html">Druk materiałów</a></li>
+                        <li><a href="tloczenie.html">Tłoczenie płyt</a></li>
+                        <li><a href="video.html">Produkcja wideo</a></li>
+                        <li><a href="marketing.html">Marketing AI</a></li>
+                        <li><a href="digitalizacja.html">Digitalizacja</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Zapisz się, aby otrzymywać najnowsze informacje i promocje</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Twój adres email" required>
+                        <button type="submit" class="btn btn-primary">Zapisz się</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 KAROT. Wszelkie prawa zastrzeżone.</p>
+                </div>
+                <div class="footer-legal">
+                    <ul>
+                        <li><a href="privacy.html">Polityka prywatności</a></li>
+                        <li><a href="terms.html">Regulamin</a></li>
+                        <li><a href="cookies.html">Polityka cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+        // Obsługa menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const mainNav = document.querySelector('.main-nav');
+            const navLinks = document.querySelectorAll('.main-nav ul li a');
+            
+            if (hamburger && mainNav) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    mainNav.classList.toggle('open');
+                    document.body.style.overflow = mainNav.classList.contains('open') ? 'hidden' : '';
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('open')) {
+                        hamburger.classList.remove('active');
+                        mainNav.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+            
+            // Obsługa przycisku powrotu do góry
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                backToTopButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+        
+        // Funkcje do obsługi modalu ze zdjęciami
+        function openModal(src, caption) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('modalCaption');
+            
+            modal.style.display = "block";
+            modalImg.src = src;
+            captionText.innerHTML = caption;
+            
+            // Zamknij modal po kliknięciu gdziekolwiek
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal || e.target === modalImg) {
+                    closeModal();
+                }
+            });
+            
+            // Zamknij modal po 10 sekundach
+            setTimeout(closeModal, 10000);
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marketing i automatyzacja z AI od KAROT. Posty, newslettery i treści AI. Analizy kampanii, chatboty i CRM. Pełna automatyzacja komunikacji marketingowej.">
+    <meta name="keywords" content="marketing AI, automatyzacja marketingu, posty AI, newslettery AI, treści AI, analizy kampanii, chatboty, CRM, automatyzacja komunikacji">
+    <meta name="author" content="KAROT">
+    <meta name="robots" content="index, follow">
+    <title>Marketing i automatyzacja z AI | Treści AI | Analizy kampanii | KAROT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/favicon.ico">
+    <style>
+        /* Style dla podstrony marketingu */
+        .subpage-hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('img/marketing-hero-bg.jpg') center/cover no-repeat;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature-card {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            cursor: pointer;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1100;
+            padding: 50px;
+            text-align: center;
+            overflow: auto;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--white-color);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1101;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .product-card {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .product-info p {
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: var(--white-color);
+            padding: 60px 0;
+            text-align: center;
+            margin: 60px 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .cta-section h2 {
+            color: var(--white-color);
+            margin-bottom: 20px;
+        }
+        
+        .cta-section h2:after {
+            background: var(--white-color);
+        }
+        
+        .cta-section p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .btn-white {
+            background-color: var(--white-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-white:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial-box {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .testimonial-box:before {
+            content: '\201C';
+            font-size: 80px;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            color: var(--secondary-color);
+            opacity: 0.2;
+        }
+        
+        @media (max-width: 768px) {
+            .modal {
+                padding: 20px;
+            }
+            
+            .close {
+                top: 10px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body id="app">
+    <header class="sticky-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo-karot.svg" alt="KAROT" width="130" height="65"></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#o-firmie">O firmie</a></li>
+                    <li><a href="index.html#uslugi">Usługi</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#cennik">Cennik</a></li>
+                    <li><a href="index.html#opinie">Opinie</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="index.html#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="cta-button">
+                <a href="index.html#kontakt" class="btn btn-primary">Zamów wycenę</a>
+            </div>
+            <div class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="start" class="hero subpage-hero">
+        <div class="container">
+            <h1>Marketing i automatyzacja z AI</h1>
+            <p>Zwiększ efektywność swoich działań marketingowych dzięki sztucznej inteligencji</p>
+            <a href="index.html#kontakt" class="btn btn-primary">Darmowa konsultacja</a>
+        </div>
+    </section>
+
+    <section class="about-service">
+        <div class="container">
+            <h2>Rewolucjonizuj swój marketing z pomocą AI</h2>
+            <p class="section-intro">W KAROT oferujemy kompleksowe rozwiązania marketingowe oparte na sztucznej inteligencji, które automatyzują procesy, zwiększają efektywność i pozwalają dotrzeć do klientów w sposób spersonalizowany i angażujący.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>Posty i treści AI</h3>
+                    <p>Automatyczne generowanie angażujących postów do mediów społecznościowych, artykułów na bloga i tekstów marketingowych dopasowanych do Twojej marki.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Newslettery AI</h3>
+                    <p>Spersonalizowane kampanie e-mail marketing tworzone przez AI, które zwiększają współczynniki otwarć i konwersji. Automatyczne segmentowanie odbiorców.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analizy kampanii</h3>
+                    <p>Zaawansowane analizy i raporty z kampanii marketingowych z wykorzystaniem AI do identyfikacji trendów i optymalizacji działań.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Chatboty AI</h3>
+                    <p>Inteligentne chatboty obsługujące klientów 24/7, odpowiadające na pytania, zbierające leady i wspierające sprzedaż na Twojej stronie.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>CRM i automatyzacja</h3>
+                    <p>Systemy zarządzania relacjami z klientami wspierane przez AI, które automatyzują procesy sprzedażowe i marketingowe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Automatyzacja komunikacji</h3>
+                    <p>Pełna automatyzacja komunikacji z klientami poprzez różne kanały: e-mail, social media, SMS, powiadomienia push.</p>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h2>Dlaczego warto zainwestować w marketing AI?</h2>
+                <p>Marketing oparty na sztucznej inteligencji to przyszłość, która dzieje się już teraz. Oto dlaczego warto w niego zainwestować:</p>
+                <ul>
+                    <li><strong>Oszczędność czasu i zasobów</strong> - automatyzacja rutynowych zadań marketingowych pozwala zaoszczędzić nawet 70% czasu zespołu, który może skupić się na strategii i kreatywności.</li>
+                    <li><strong>Personalizacja na masową skalę</strong> - AI umożliwia tworzenie spersonalizowanych treści i ofert dla tysięcy klientów jednocześnie, co zwiększa skuteczność działań marketingowych.</li>
+                    <li><strong>Optymalizacja w czasie rzeczywistym</strong> - systemy AI analizują dane na bieżąco i automatycznie dostosowują kampanie, aby osiągnąć najlepsze wyniki.</li>
+                    <li><strong>Przewaga konkurencyjna</strong> - firmy wykorzystujące AI w marketingu osiągają średnio o 30% wyższe wskaźniki konwersji niż konkurencja stosująca tradycyjne metody.</li>
+                    <li><strong>Skalowalność</strong> - rozwiązania oparte na AI rosną wraz z Twoim biznesem, umożliwiając obsługę rosnącej liczby klientów bez proporcjonalnego zwiększania kosztów.</li>
+                </ul>
+            </div>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="img/ai-content.jpg" alt="Generowanie treści przez AI" onclick="openModal(this.src, 'Automatyczne generowanie treści marketingowych przez AI')">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/ai-analytics.jpg" alt="Analizy AI" onclick="openModal(this.src, 'Zaawansowane analizy kampanii marketingowych z wykorzystaniem AI')">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/ai-chatbot.jpg" alt="Chatbot AI" onclick="openModal(this.src, 'Inteligentny chatbot obsługujący klientów 24/7')">
+                </div>
+            </div>
+            
+            <!-- Modal dla powiększania zdjęć -->
+            <div id="imageModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImage">
+                <div id="modalCaption" style="color: white; margin-top: 20px; font-size: 1.2rem;"></div>
+            </div>
+            
+            <div class="content-block">
+                <h2>Jak wykorzystujemy AI w marketingu?</h2>
+                <p>W KAROT stosujemy najnowocześniejsze technologie AI, aby dostarczać naszym klientom innowacyjne rozwiązania marketingowe:</p>
+                
+                <h3>Generowanie i optymalizacja treści</h3>
+                <p>Wykorzystujemy zaawansowane modele językowe AI do tworzenia angażujących treści marketingowych: postów w mediach społecznościowych, artykułów blogowych, opisów produktów, newsletterów i wielu innych. AI analizuje również istniejące treści i sugeruje optymalizacje, które zwiększają ich skuteczność i widoczność w wyszukiwarkach.</p>
+                
+                <h3>Personalizacja doświadczeń klientów</h3>
+                <p>Nasze systemy AI analizują zachowania i preferencje użytkowników, aby dostarczać im spersonalizowane doświadczenia. Od dynamicznych stron internetowych, które dostosowują się do potrzeb odwiedzającego, po e-maile z rekomendacjami produktów dopasowanymi do indywidualnych zainteresowań – personalizacja zwiększa zaangażowanie i konwersję.</p>
+                
+                <h3>Automatyzacja procesów marketingowych</h3>
+                <p>Automatyzujemy rutynowe zadania marketingowe, takie jak planowanie i publikacja postów, wysyłka e-maili, segmentacja odbiorców czy raportowanie. Dzięki temu Twój zespół może skupić się na strategii i kreatywności, podczas gdy AI zajmuje się powtarzalnymi czynnościami.</p>
+                
+                <h3>Predykcyjna analityka</h3>
+                <p>Nasze narzędzia AI nie tylko analizują dane historyczne, ale także przewidują przyszłe trendy i zachowania klientów. Dzięki temu możesz podejmować strategiczne decyzje oparte na prognozach, a nie tylko na danych z przeszłości, co daje Ci przewagę nad konkurencją.</p>
+            </div>
+            
+            <h2>Nasze bestsellery</h2>
+            <p class="section-intro">Poznaj nasze najpopularniejsze pakiety marketingu AI</p>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/social-ai-pack.jpg" alt="Social Media AI Pack">
+                    </div>
+                    <div class="product-info">
+                        <h3>Social Media AI Pack</h3>
+                        <p>Automatyczne generowanie i publikacja treści w mediach społecznościowych, analiza efektywności i optymalizacja w czasie rzeczywistym.</p>
+                        <div class="price">od 1200 zł/mies.</div>
+                        <a href="index.html#kontakt" class="btn btn-primary">Zapytaj o wycenę</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/chatbot-ai.jpg" alt="Chatbot AI">
+                    </div>
+                    <div class="product-info">
+                        <h3>Inteligentny Chatbot AI</h3>
+                        <p>Zaawansowany chatbot obsługujący klientów 24/7, zbierający leady i wspierający sprzedaż. Integracja z Twoją stroną i systemami CRM.</p>
+                        <div class="price">od 1500 zł</div>
+                        <a href="index.html#kontakt" class="btn btn-primary">Zapytaj o wycenę</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/email-automation.jpg" alt="Email Automation">
+                    </div>
+                    <div class="product-info">
+                        <h3>Email Marketing AI</h3>
+                        <p>Automatyczne kampanie e-mail z personalizacją treści, segmentacją odbiorców i optymalizacją czasu wysyłki dla maksymalnej skuteczności.</p>
+                        <div class="price">od 900 zł/mies.</div>
+                        <a href="index.html#kontakt" class="btn btn-primary">Zapytaj o wycenę</a>
+                    </div>
+                </div>
+            </div>
+            <p class="small-text" style="text-align: center; font-size: 0.9rem; color: #666;">* Ceny orientacyjne. Skontaktuj się z nami, aby otrzymać indywidualną wycenę dopasowaną do Twoich potrzeb.</p>
+            
+            <div class="testimonial-box">
+                <p>"Wdrożenie rozwiązań marketingowych opartych na AI od KAROT zrewolucjonizowało naszą komunikację z klientami. Automatyzacja kampanii e-mail i mediów społecznościowych pozwoliła nam zaoszczędzić mnóstwo czasu, a jednocześnie zwiększyć zasięgi i konwersje. Szczególnie doceniamy chatbota, który obsługuje podstawowe zapytania klientów 24/7, co odciążyło nasz dział obsługi klienta. Polecam każdej firmie, która chce zwiększyć efektywność swoich działań marketingowych."</p>
+                <p style="text-align: right; font-weight: 500; margin-top: 20px;">- Michał Adamski, Dyrektor Marketingu, E-commerce Shop</p>
+            </div>
+            
+            <div class="cta-section">
+                <h2>Zrewolucjonizuj swój marketing z AI już dziś!</h2>
+                <p>Skontaktuj się z nami, aby omówić swoje potrzeby i otrzymać indywidualną wycenę. Oferujemy darmowe konsultacje, podczas których pokażemy, jak AI może zwiększyć efektywność Twoich działań marketingowych.</p>
+                <a href="index.html#kontakt" class="btn btn-white">Skontaktuj się z nami</a>
+            </div>
+            
+            <div class="content-block">
+                <h2>Często zadawane pytania</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Czy AI może całkowicie zastąpić zespół marketingowy?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>AI nie zastępuje ludzi, ale znacząco zwiększa ich efektywność. Sztuczna inteligencja doskonale radzi sobie z rutynowymi, powtarzalnymi zadaniami, analizą danych i personalizacją na dużą skalę, ale kreatywne myślenie, strategia i empatyczne zrozumienie klientów to nadal domena człowieka. Najlepsze wyniki osiąga się łącząc siłę AI z ludzką kreatywnością i intuicją.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Jak szybko zobaczę efekty wdrożenia marketingu AI?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pierwsze efekty są widoczne już po kilku tygodniach, szczególnie w obszarze oszczędności czasu i automatyzacji procesów. Pełne korzyści, takie jak zwiększenie konwersji czy personalizacja na dużą skalę, zazwyczaj ujawniają się po 2-3 miesiącach, gdy system AI zbierze wystarczającą ilość danych i dostosuje się do specyfiki Twojego biznesu. Z czasem efektywność rozwiązań AI stale rośnie, ponieważ uczą się one na podstawie gromadzonych danych.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Czy rozwiązania marketingowe AI są bezpieczne pod względem ochrony danych?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak, wszystkie nasze rozwiązania są zgodne z RODO i innymi przepisami dotyczącymi ochrony danych osobowych. Stosujemy zaawansowane metody szyfrowania danych i rygorystyczne procedury bezpieczeństwa. Dane klientów są przetwarzane lokalnie lub w certyfikowanych centrach danych na terenie UE. Dodatkowo, oferujemy pełną transparentność w zakresie gromadzenia i wykorzystywania danych, a także możliwość ich usunięcia na żądanie.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Czy mogę zintegrować rozwiązania AI z moimi istniejącymi systemami?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak, nasze rozwiązania marketingowe AI są projektowane z myślą o łatwej integracji z popularnymi systemami CRM, platformami e-commerce, narzędziami analitycznymi i mediami społecznościowymi. Oferujemy gotowe integracje z takimi systemami jak Salesforce, HubSpot, Shopify, WooCommerce, Google Analytics, Facebook, Instagram i wiele innych. Dla niestandardowych systemów możemy opracować dedykowane API, które umożliwi płynną wymianę danych.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo-karot-white.svg" alt="KAROT" width="130" height="65"></a>
+                    <p>Kompleksowe usługi multimedialne dla firm, artystów i instytucji</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Szybkie linki</h3>
+                    <ul>
+                        <li><a href="index.html#o-firmie">O firmie</a></li>
+                        <li><a href="index.html#uslugi">Usługi</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#cennik">Cennik</a></li>
+                        <li><a href="index.html#opinie">Opinie</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Nasze usługi</h3>
+                    <ul>
+                        <li><a href="gadzety.html">Gadżety reklamowe</a></li>
+                        <li><a href="druk.html">Druk materiałów</a></li>
+                        <li><a href="tloczenie.html">Tłoczenie płyt</a></li>
+                        <li><a href="video.html">Produkcja wideo</a></li>
+                        <li><a href="marketing.html">Marketing AI</a></li>
+                        <li><a href="digitalizacja.html">Digitalizacja</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Zapisz się, aby otrzymywać najnowsze informacje i promocje</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Twój adres email" required>
+                        <button type="submit" class="btn btn-primary">Zapisz się</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 KAROT. Wszelkie prawa zastrzeżone.</p>
+                </div>
+                <div class="footer-legal">
+                    <ul>
+                        <li><a href="privacy.html">Polityka prywatności</a></li>
+                        <li><a href="terms.html">Regulamin</a></li>
+                        <li><a href="cookies.html">Polityka cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+        // Obsługa menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const mainNav = document.querySelector('.main-nav');
+            const navLinks = document.querySelectorAll('.main-nav ul li a');
+            
+            if (hamburger && mainNav) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    mainNav.classList.toggle('open');
+                    document.body.style.overflow = mainNav.classList.contains('open') ? 'hidden' : '';
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('open')) {
+                        hamburger.classList.remove('active');
+                        mainNav.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+            
+            // Obsługa FAQ
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Zamknij wszystkie inne elementy
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                            const toggle = otherItem.querySelector('.faq-toggle i');
+                            if (toggle) toggle.className = 'fas fa-plus';
+                        }
+                    });
+                    
+                    // Przełącz stan aktualnego elementu
+                    item.classList.toggle('active');
+                    
+                    // Zmień ikonę
+                    const toggle = item.querySelector('.faq-toggle i');
+                    if (toggle) {
+                        toggle.className = item.classList.contains('active') ? 
+                            'fas fa-minus' : 'fas fa-plus';
+                    }
+                });
+            });
+            
+            // Obsługa przycisku powrotu do góry
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                backToTopButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+        
+        // Funkcje do obsługi modalu ze zdjęciami
+        function openModal(src, caption) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('modalCaption');
+            
+            modal.style.display = "block";
+            modalImg.src = src;
+            captionText.innerHTML = caption;
+            
+            // Zamknij modal po kliknięciu gdziekolwiek
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal || e.target === modalImg) {
+                    closeModal();
+                }
+            });
+            
+            // Zamknij modal po 10 sekundach
+            setTimeout(closeModal, 10000);
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+        }
+    </script>
+</body>
+</html>

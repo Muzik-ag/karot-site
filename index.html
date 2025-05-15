@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KAROT - kompleksowa oferta multimedialna: tłoczenie płyt, gadżety reklamowe, digitalizacja, produkcja video z AI">
+    <meta name="keywords" content="tłoczenie płyt, gadżety reklamowe, digitalizacja, produkcja video, AI, VHS, pendrive, nadruk">
+    <meta name="author" content="KAROT">
+    <meta name="robots" content="index, follow">
+    <title>KAROT - Kompleksowe usługi multimedialne</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/favicon.ico">
+</head>
+<body id="app">
+    <header class="sticky-header">
+        <div class="container">
+            <div class="logo">
+            <a href="index.html"><img src="img/logo-karot.svg" alt="KAROT" width="130" height="65"></a>
+            </div>
+
+            <nav class="main-nav" :class="{'open': isMenuOpen}">
+                <ul>
+                    <li><a href="#o-firmie" @click.prevent="scrollToSection('o-firmie')" :class="{'active': currentSection === 'o-firmie'}">O firmie</a></li>
+                    <li><a href="#uslugi" @click.prevent="scrollToSection('uslugi')" :class="{'active': currentSection === 'uslugi'}">Usługi</a></li>
+                    <li><a href="#portfolio" @click.prevent="scrollToSection('portfolio')" :class="{'active': currentSection === 'portfolio'}">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#cennik" @click.prevent="scrollToSection('cennik')" :class="{'active': currentSection === 'cennik'}">Cennik</a></li>
+                    <li><a href="#opinie" @click.prevent="scrollToSection('opinie')" :class="{'active': currentSection === 'opinie'}">Opinie</a></li>
+                    <li><a href="#faq" @click.prevent="scrollToSection('faq')" :class="{'active': currentSection === 'faq'}">FAQ</a></li>
+                    <li><a href="#kontakt" @click.prevent="scrollToSection('kontakt')" :class="{'active': currentSection === 'kontakt'}">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="cta-button">
+                <a href="#kontakt" class="btn btn-primary" @click.prevent="scrollToSection('kontakt')">Zamów wycenę</a>
+            </div>
+            <div class="hamburger-menu" @click="toggleMenu" :class="{'active': isMenuOpen}">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="start" class="hero">
+        <div class="container">
+            <h1>Produkcja multimediów, kopiowanie i digitalizacja, wszystko w jednym miejscu</h1>
+            <p>Tłoczenie płyt CD i winyli, pendrive’y z nadrukiem, druk materiałów, digitalizacja oraz nowoczesne wideo do social mediów z AI – usługi dla firm, artystów i instytucji</p>
+            <a href="#kontakt" class="btn btn-primary" @click.prevent="scrollToSection('kontakt')">Darmowa konsultacja</a>
+        </div>
+    </section>
+
+    <section id="o-firmie" class="about">
+    <div class="container">
+        <h2>O firmie</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Firma KAROT od ponad 15 lat wspiera firmy, artystów i instytucje w realizacji projektów z zakresu produkcji multimediów, digitalizacji, druku materiałów promocyjnych oraz nowoczesnych usług opartych na sztucznej inteligencji i wideo do social mediów. Łączymy tradycyjne techniki z innowacyjną technologią, wspierając klientów w ich cyfrowej transformacji.</p>
+                
+                <p>Nasze doświadczenie obejmuje ponad dekadę pracy w branży, ale stale inwestujemy w rozwój i nowe rozwiązania. Dzięki temu nasi klienci korzystają nie tylko z niezawodnych metod kopiowania płyt, tłoczenia nośników czy digitalizacji archiwów, ale także z nowoczesnych usług takich jak wideo do TikToka i Instagrama czy treści generowane z pomocą AI.</p>
+                
+                <h3>Nasze atuty:</h3>
+                <ul>
+                    <li>15+ lat doświadczenia w branży multimedialnej</li>
+                    <li>5000+ zrealizowanych projektów</li>
+                    <li>Zespół pasjonatów, łączących wiedzę technologiczną z kreatywnością</li>
+                </ul>
+                
+                <h3>Misja firmy KAROT:</h3>
+                <p>Pomagać klientom w cyfrowej transformacji poprzez łączenie sprawdzonych metod z najnowszymi trendami w multimediach i technologii.</p>
+                
+                <a href="#uslugi" class="btn btn-primary">Poznaj nasze usługi</a>
+            </div>
+            <div class="about-image">
+                <img src="img/produkcja-multimediow-digitalizacja-druk-ai.webp" alt="KAROT - Produkcja multimedialna">
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+    <section id="uslugi" class="services">
+        <div class="container">
+            <h2>Usługi</h2>
+            <p class="section-intro">Oferujemy kompleksowe rozwiązania multimedialne dostosowane do potrzeb Twojej firmy</p>
+            <div class="services-grid">
+                <div class="service-card" onclick="window.location.href='gadzety.html'">
+                    <div class="service-icon">
+                        <i class="fa fa-hdd"></i>
+                    </div>
+                    <h3>Gadżety reklamowe i pamięci USB</h3>
+                    <p>Pendrive'y reklamowe z logo – drewniane, metalowe, eko. Powerbanki, długopisy, kubki, torby z nadrukiem. Zestawy gadżetów firmowych – na prezenty i eventy.</p>
+                    <a href="gadzety.html" class="btn btn-secondary">Dowiedz się więcej</a>
+                </div>
+                <div class="service-card" onclick="window.location.href='druk.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3>Druk materiałów promocyjnych i opakowań</h3>
+                    <p>Wizytówki, ulotki, plakaty, koperty z nadrukiem. Opakowania do płyt i pendrive'ów: digipacki, ekopacki. Projekty graficzne i branding.</p>
+                    <a href="druk.html" class="btn btn-secondary">Dowiedz się więcej</a>
+                </div>
+                <div class="service-card" onclick="window.location.href='tloczenie.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-compact-disc"></i>
+                    </div>
+                    <h3>Tłoczenie płyt CD/DVD/Blu-ray/Winyli</h3>
+                    <p>Tłoczenie i nadruk offsetowy CD/DVD/BD. Duplikacja danych dla mniejszych serii. Produkcja opakowań i booklety.</p>
+                    <a href="tloczenie.html" class="btn btn-secondary">Dowiedz się więcej</a>
+                </div>
+                <div class="service-card" onclick="window.location.href='video.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Produkcja wideo do social mediów z AI</h3>
+                    <p>Filmy promocyjne, animacje i spoty AI. AI-lektor, napisy, tła, muzyka. Format Reels, TikTok, YouTube Shorts.</p>
+                    <a href="video.html" class="btn btn-secondary">Dowiedz się więcej</a>
+                </div>
+                <div class="service-card" onclick="window.location.href='marketing.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Marketing i automatyzacja z AI</h3>
+                    <p>Posty, newslettery i treści AI. Analizy kampanii, chatboty i CRM. Pełna automatyzacja komunikacji.</p>
+                    <a href="marketing.html" class="btn btn-secondary">Dowiedz się więcej</a>
+                </div>
+                <div class="service-card" onclick="window.location.href='digitalizacja.html'">
+                    <div class="service-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Digitalizacja kaset VHS, miniDV i audio</h3>
+                    <p>Przegrywanie: VHS, miniDV, audio MC. Pliki: MP4, AVI, MP3, WAV. Poprawa jakości, plansze tytułowe.</p>
+                    <a href="digitalizacja.html" class="btn btn-secondary">Dowiedz się więcej</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+    <div class="container">
+        <h2>Portfolio</h2>
+        <p class="section-intro">Zobacz nasze wybrane realizacje</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="gadzety">
+                <div class="portfolio-image">
+                    <img src="img/portfolio1.jpg" alt="Pendrive'y reklamowe">
+                    <div class="portfolio-overlay">
+                        <a href="portfolio-details.html" class="btn btn-primary">Zobacz szczegóły</a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Pendrive'y reklamowe dla Tech Corp</h3>
+                    <p>Gadżety reklamowe</p>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="druk">
+                <div class="portfolio-image">
+                    <img src="img/portfolio2.jpg" alt="Materiały drukowane">
+                    <div class="portfolio-overlay">
+                        <a href="portfolio-details.html" class="btn btn-primary">Zobacz szczegóły</a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Identyfikacja wizualna dla StartUp Inc.</h3>
+                    <p>Druk i branding</p>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="tloczenie">
+                <div class="portfolio-image">
+                    <img src="img/portfolio3.jpg" alt="Płyty CD z nadrukiem">
+                    <div class="portfolio-overlay">
+                        <a href="portfolio-details.html" class="btn btn-primary">Zobacz szczegóły</a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Album muzyczny dla zespołu Melodia</h3>
+                    <p>Tłoczenie płyt</p>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="video">
+                <div class="portfolio-image">
+                    <img src="img/portfolio4.jpg" alt="Produkcja wideo">
+                    <div class="portfolio-overlay">
+                        <a href="portfolio-details.html" class="btn btn-primary">Zobacz szczegóły</a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Kampania wideo dla Fashion Brand</h3>
+                    <p>Produkcja wideo</p>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="marketing">
+                <div class="portfolio-image">
+                    <img src="img/portfolio5.jpg" alt="Kampania marketingowa">
+                    <div class="portfolio-overlay">
+                        <a href="portfolio-details.html" class="btn btn-primary">Zobacz szczegóły</a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Automatyzacja marketingu dla E-commerce</h3>
+                    <p>Marketing AI</p>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="digitalizacja">
+                <div class="portfolio-image">
+                    <img src="img/portfolio6.jpg" alt="Digitalizacja materiałów">
+                    <div class="portfolio-overlay">
+                        <a href="portfolio-details.html" class="btn btn-primary">Zobacz szczegóły</a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Archiwizacja materiałów dla Muzeum Historii</h3>
+                    <p>Digitalizacja</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="cennik" class="pricing">
+        <div class="container">
+            <h2>Cennik</h2>
+            <p class="section-intro">Wybierz pakiet dopasowany do Twoich potrzeb</p>
+            <div class="pricing-table">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Pakiet Podstawowy</h3>
+                        <p class="pricing-description">Idealne rozwiązanie dla małych firm i indywidualnych klientów</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Podstawowa obsługa projektów</li>
+                            <li><i class="fas fa-check"></i> Realizacja w standardowym czasie</li>
+                            <li><i class="fas fa-check"></i> Podstawowe formaty plików</li>
+                            <li><i class="fas fa-check"></i> Wsparcie e-mail</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <p class="pricing-note">Wycena indywidualna</p>
+                        <a href="#kontakt" class="btn btn-primary" @click.prevent="scrollToSection('kontakt')">Zapytaj o wycenę</a>
+                    </div>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <span class="pricing-badge">Polecany</span>
+                        <h3>Pakiet Standard</h3>
+                        <p class="pricing-description">Optymalne rozwiązanie dla średnich firm i projektów</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Priorytetowa obsługa projektów</li>
+                            <li><i class="fas fa-check"></i> Szybsza realizacja</li>
+                            <li><i class="fas fa-check"></i> Rozszerzone formaty plików</li>
+                            <li><i class="fas fa-check"></i> Wsparcie telefoniczne i e-mail</li>
+                            <li><i class="fas fa-check"></i> Darmowe poprawki</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <p class="pricing-note">Wycena indywidualna</p>
+                        <a href="#kontakt" class="btn btn-primary" @click.prevent="scrollToSection('kontakt')">Zapytaj o wycenę</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Pakiet Premium</h3>
+                        <p class="pricing-description">Kompleksowe rozwiązanie dla dużych firm i złożonych projektów</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Ekspresowa obsługa projektów</li>
+                            <li><i class="fas fa-check"></i> Najszybsza realizacja</li>
+                            <li><i class="fas fa-check"></i> Wszystkie formaty plików</li>
+                            <li><i class="fas fa-check"></i> Dedykowany opiekun projektu</li>
+                            <li><i class="fas fa-check"></i> Nielimitowane poprawki</li>
+                            <li><i class="fas fa-check"></i> Priorytetowe wsparcie 24/7</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <p class="pricing-note">Wycena indywidualna</p>
+                        <a href="#kontakt" class="btn btn-primary" @click.prevent="scrollToSection('kontakt')">Zapytaj o wycenę</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="opinie" class="testimonials">
+        <div class="container">
+            <h2>Opinie klientów</h2>
+            <p class="section-intro">Co mówią o KAROT nasi klienci</p>
+            <div class="testimonial-grid">
+                <div class="testimonial-item">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Jesteśmy niezmiernie zadowoleni z profesjonalizmu i doskonałej jakości usług świadczonych przez firmę KAROT. Wszystkie produkcje wykonujemy u sprawdzonych i rzetelnych partnerów jakim jest KAROT.
+                                                Dziękujemy!
+                                                Mała Armia Janosika."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Damian Pałasz</h4>
+                            <p>Mała Armia Janosika</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Fundacja Jednego Serca Jednego Ducha od wielu lat współpracuje z firmą KAROT Anna Marchewka przy realizacji płyt CD/DVD i pendrive’ów z naszych corocznych koncertów w Rzeszowie. Zespół KAROT działa profesjonalnie, terminowo i niezawodnie – zawsze spełniając nasze wysokie wymagania. Z pełnym przekonaniem polecamy firmę KAROT jako rzetelnego partnera do produkcji multimediów."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Ks Andrzej Cypryś</h4>
+                            <p>Prezes Zarządu Fundacja Jednego Serca Jednego Ducha</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Zespół ekspertów, pełen profesjonalizm. Nasza płyta została wytłoczona i zapakowana w najwyższej jakości digipack. Polecam!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Anna Lipiak i Grzegorz Niemczuk</h4>
+                            <p>Pianiści klasyczni</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Od koncepcji do realizacji. KAROT jest niezawodnym partnerem w zakresie tłoczenia płyt CD i druku opakowań. Gorąco polecamy ich usługi."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Kuba "Bobas" Wilk</h4>
+                            <p>Studio Nagrań Chabakoovka</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Firma KAROT to solidny partner biznesowy, oferujący nie tylko doskonałą jakość druku, ale także przyjazne i profesjonalne podejście do klienta. Zdecydowanie polecam ich usługi każdemu poszukującemu niezawodnego partnera w dziedzinie druku i tłoczeniu płyt CD."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Bogusław Niedziółka</h4>
+                            <p>Prezes Zarządu BNB RECORDS Sp. z o.o.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"W ciągu 60 lat mojej działalności jako wydawca muzyki i filmów, jesteście najbardziej profesjonalną i niezawodną firmą, z którą współpracowałem. Często korzystam z Waszych porad technicznych. 
+                        Szczególnie dziękuję Panu Andrzeju G. za pomoc, cierpliwość i wsparcie w realizacji projektów. Mam nadzieję, że kolejna produkcja przebiegnie równie sprawnie.Z szacunkiem i wdzięcznością."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Jan Budziaszek</h4>
+                            <p>Zespół Skaldowie</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Najczęściej zadawane pytania</h2>
+            <p class="section-intro">Odpowiedzi na najczęściej zadawane pytania</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Jak długo trwa realizacja projektu?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Czas realizacji projektu zależy od jego zakresu i stopnia skomplikowania. Standardowo w KAROT projekty realizujemy w ciągu 2-6 tygodni. Dla klientów potrzebujących szybszej realizacji oferujemy usługi ekspresowe.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Czy oferujecie wsparcie po zakończeniu projektu?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak, zapewniamy wsparcie techniczne i aktualizacje po zakończeniu projektu. Zakres wsparcia zależy od wybranego pakietu usług. W pakiecie Premium oferujemy priorytetowe wsparcie 24/7.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Jakie formaty plików obsługujecie przy digitalizacji?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Przy digitalizacji obsługujemy wszystkie popularne formaty plików, w tym MP4, AVI, MOV, MP3, WAV, FLAC i wiele innych. Możemy również dostosować format wyjściowy do indywidualnych potrzeb klienta.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Czy można zamówić indywidualną wycenę?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oczywiście, zachęcamy do kontaktu w celu otrzymania indywidualnej wyceny dostosowanej do konkretnych potrzeb. Możesz skorzystać z formularza kontaktowego na naszej stronie lub zadzwonić bezpośrednio pod numer telefonu podany w sekcji Kontakt.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Jakie są minimalne nakłady przy tłoczeniu płyt?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Minimalne nakłady przy tłoczeniu płyt CD to 300 sztuk, dla DVD i Blu-ray 500 sztuk. Dla mniejszych ilości oferujemy usługę duplikacji, która jest ekonomicznym rozwiązaniem dla nakładów od 10 do 300 sztuk.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Czy oferujecie usługi dla klientów zagranicznych?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak, obsługujemy klientów z całej Europy. Oferujemy komunikację w języku polskim, angielskim i niemieckim. Realizujemy wysyłki międzynarodowe za pośrednictwem sprawdzonych firm kurierskich.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="kontakt" class="contact">
+    <div class="container">
+        <h2>Kontakt</h2>
+        <p class="section-intro">Masz pytania? Skontaktuj się z nami!</p>
+        
+        <div class="contact-content">
+            <!-- Dane kontaktowe po lewej -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Adres</h3>
+                        <p>KAROT Anna Marchewka<br>
+                        Siedziba Biura: Dąbrowskich 84<br>
+                        32-091 Michałowice, Polska</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Telefon</h3>
+                        <p><a href="tel:+48795584927">+48 795-584-927</a><br>
+                        <a href="tel:+48509981527">+48 509-981-527</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p><a href="mailto:biuro@karot.pl">biuro@karot.pl</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Godziny pracy</h3>
+                        <p>Poniedziałek - Piątek: 9:00 - 17:00</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Identyfikator podatkowy</h3>
+                        <p>NIP: 6791899714<br>
+                        Regon: 351173415</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <!-- Mapa po prawej -->
+            <div class="map-container">
+            <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d81886.27635879301!2d19.896175308255987!3d50.10601516004269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471650531ffbcc39%3A0x87529023d4810a8a!2sD%C4%85browskich%2084%2C%2032-091%20Micha%C5%82owice!5e0!3m2!1spl!2spl!4v1701101880063!5m2!1spl!2spl" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+            </iframe>   
+            </div>
+        </div>
+    </div>
+</section>
+
+    <a href="#" id="back-to-top" class="back-to-top" @click.prevent="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo-karot-white.svg" alt="KAROT" width="130" height="65"></a>
+                    <p>Kompleksowe usługi multimedialne dla firm, artystów i instytucji</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Szybkie linki</h3>
+                    <ul>
+                        <li><a href="#o-firmie">O firmie</a></li>
+                        <li><a href="#uslugi">Usługi</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#cennik">Cennik</a></li>
+                        <li><a href="#opinie">Opinie</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Nasze usługi</h3>
+                    <ul>
+                        <li><a href="gadzety.html">Gadżety reklamowe</a></li>
+                        <li><a href="druk.html">Druk materiałów</a></li>
+                        <li><a href="tloczenie.html">Tłoczenie płyt</a></li>
+                        <li><a href="video.html">Produkcja wideo</a></li>
+                        <li><a href="marketing.html">Marketing AI</a></li>
+                        <li><a href="digitalizacja.html">Digitalizacja</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Zapisz się, aby otrzymywać najnowsze informacje i promocje</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Twój adres email" required>
+                        <button type="submit" class="btn btn-primary">Zapisz się</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 KAROT. Wszelkie prawa zastrzeżone.</p>
+                </div>
+                <div class="footer-legal">
+                    <ul>
+                        <li><a href="privacy.html">Polityka prywatności</a></li>
+                        <li><a href="terms.html">Regulamin</a></li>
+                        <li><a href="cookies.html">Polityka cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog KAROT - eksperckie artykuły o gadżetach reklamowych, druku, tłoczeniu płyt, produkcji wideo, marketingu AI i digitalizacji. Porady, trendy i case studies.">
+    <meta name="keywords" content="blog marketingowy, gadżety reklamowe, druk materiałów, tłoczenie płyt, produkcja wideo, marketing AI, digitalizacja, porady, case studies">
+    <meta name="author" content="KAROT">
+    <meta name="robots" content="index, follow">
+    <title>Blog KAROT | Eksperckie artykuły o marketingu i multimediach | Porady i trendy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/favicon.ico">
+    <style>
+        /* Style dla podstrony bloga */
+        .subpage-hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('img/blog-hero-bg.jpg') center/cover no-repeat;
+        }
+        
+        .blog-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin: 50px 0;
+        }
+        
+        .blog-main {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .blog-sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .blog-card {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .blog-card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .blog-category {
+            display: inline-block;
+            background: var(--light-gray);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .blog-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .blog-meta {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+        
+        .blog-excerpt {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .blog-card .btn {
+            align-self: flex-start;
+            margin-top: auto;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .pagination a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: var(--white-color);
+            color: var(--primary-color);
+            font-weight: 500;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background: var(--gradient);
+            color: var(--white-color);
+        }
+        
+        .sidebar-widget {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .sidebar-widget h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            position: relative;
+        }
+        
+        .sidebar-widget h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 50px;
+            height: 2px;
+            background: var(--gradient);
+        }
+        
+        .popular-post {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .popular-post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .popular-post-image {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .popular-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .popular-post-content h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        
+        .popular-post-content a {
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .popular-post-content a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .popular-post-date {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+        }
+        
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumbs a {
+            color: var(--primary-color);
+        }
+        
+        .breadcrumbs span {
+            margin: 0 10px;
+            color: var(--dark-gray);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: var(--white-color);
+            padding: 60px 0;
+            text-align: center;
+            margin: 60px 0 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .cta-section h2 {
+            color: var(--white-color);
+            margin-bottom: 20px;
+        }
+        
+        .cta-section h2:after {
+            background: var(--white-color);
+        }
+        
+        .cta-section p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .btn-white {
+            background-color: var(--white-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-white:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        @media (max-width: 992px) {
+            .blog-container {
+                flex-direction: column;
+            }
+            
+            .blog-main, .blog-sidebar {
+                width: 100%;
+            }
+            
+            .blog-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .blog-card-image {
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pagination {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body id="app">
+    <header class="sticky-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo-karot.svg" alt="KAROT" width="130" height="65"></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#o-firmie">O firmie</a></li>
+                    <li><a href="index.html#uslugi">Usługi</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="index.html#cennik">Cennik</a></li>
+                    <li><a href="index.html#opinie">Opinie</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="index.html#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="cta-button">
+                <a href="index.html#kontakt" class="btn btn-primary">Zamów wycenę</a>
+            </div>
+            <div class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="start" class="hero subpage-hero">
+        <div class="container">
+            <h1>Blog KAROT</h1>
+            <p>Eksperckie artykuły, porady i trendy ze świata marketingu i multimediów</p>
+            <a href="index.html#kontakt" class="btn btn-primary">Skontaktuj się z nami</a>
+        </div>
+    </section>
+
+    <section class="blog-section">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Strona główna</a>
+                <span>/</span>
+                <a href="blog.html">Blog</a>
+            </div>
+            
+            <div class="blog-container">
+                <div class="blog-main">
+                    <div class="blog-grid">
+                        <!-- Artykuł 1 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post1.jpg" alt="Gadżety reklamowe w 2025 roku">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Trendy</span>
+                                <h3 class="blog-title">Gadżety reklamowe w 2025 roku - trendy, które warto znać</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 10 maja 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>Gadżety reklamowe niezmiennie pozostają jednym z najskuteczniejszych narzędzi marketingowych. W 2025 roku obserwujemy wyraźny zwrot w kierunku ekologicznych i technologicznie zaawansowanych produktów.</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Artykuł 2 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post2.jpg" alt="DMM or lacquer cut? Vinyl Mastering Technologies Compared">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Produkcja audio</span>
+                                <h3 class="blog-title">DMM or lacquer cut? Vinyl Mastering Technologies Compared</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 5 maja 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>Porównanie technologii masteringu winyli - DMM (Direct Metal Mastering) i tradycyjnego cięcia w lakierze. Jakie są różnice w brzmieniu i trwałości płyt winylowych?</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Artykuł 3 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post3.jpg" alt="Guide to cassette tape production">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Produkcja audio</span>
+                                <h3 class="blog-title">Guide to cassette tape production</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 28 kwietnia 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>Kompleksowy przewodnik po produkcji kaset magnetofonowych - od wyboru taśmy, przez nagrywanie, po projektowanie i druk okładek. Powrót do analogowego formatu.</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Artykuł 4 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post4.jpg" alt="Zero-click marketing">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Marketing</span>
+                                <h3 class="blog-title">Zero-click marketing - jak wykorzystać nowy trend w 2025 roku</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 22 kwietnia 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>Zero-click marketing to odpowiedź na rosnącą liczbę użytkowników, którzy szukają błyskawicznych odpowiedzi. Jak wykorzystać ten trend, zamiast narzekać na spadki CTR?</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Artykuł 5 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post5.jpg" alt="Content marketing 2025">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Content marketing</span>
+                                <h3 class="blog-title">Content marketing 2025 - autentyczność, upraszczanie i efektywność kosztowa</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 15 kwietnia 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>W 2025 roku content marketing koncentruje się na autentyczności, upraszczaniu i efektywności kosztowej. Dowiedz się, jak budować wiarygodne narracje i angażować odbiorców.</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Artykuł 6 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post6.jpg" alt="Blogowanie dla firm">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Porady</span>
+                                <h3 class="blog-title">Jak zwiększyć liczbę potencjalnych klientów o 165% dzięki blogowaniu</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 8 kwietnia 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>Marki, które blogują, mogą zwiększyć liczbę potencjalnych klientów nawet o 165% w porównaniu do zaledwie 73% w przypadku tych, które nie blogują. Jak skutecznie przekształcać czytelników w klientów?</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Artykuł 7 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post7.jpg" alt="AI w marketingu">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Technologie</span>
+                                <h3 class="blog-title">Jak wykorzystać AI w marketingu - praktyczny przewodnik dla firm</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 2 kwietnia 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>Sztuczna inteligencja zrewolucjonizowała sposób, w jaki firmy prowadzą działania marketingowe. Od personalizacji treści, przez automatyzację procesów, po zaawansowaną analitykę.</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Artykuł 8 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post8.jpg" alt="Długie treści vs krótkie">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Content marketing</span>
+                                <h3 class="blog-title">Długie treści vs krótkie - co działa lepiej w 2025 roku?</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 25 marca 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>Długie treści o długości od 3000 do 10 000 słów są udostępniane częściej niż krótkie treści. Jednak 83% marketerów twierdzi, że lepiej jest tworzyć mniej wpisów, o ile są one wysokiej jakości.</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Artykuł 9 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post9.jpg" alt="Digitalizacja archiwów">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Digitalizacja</span>
+                                <h3 class="blog-title">Digitalizacja archiwów - jak uchronić cenne wspomnienia przed zniszczeniem</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 18 marca 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>Kasety VHS, taśmy audio i inne analogowe nośniki ulegają naturalnemu procesowi degradacji. Digitalizacja to proces, który pozwala zachować te materiały w formie cyfrowej dla przyszłych pokoleń.</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Artykuł 10 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post10.jpg" alt="Błędy w content marketingu">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Content marketing</span>
+                                <h3 class="blog-title">7 błędów w content marketingu, których należy unikać w 2025 roku</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 10 marca 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>Artykuły "Błędy, których należy unikać" są najczęściej udostępniane. Poznaj 7 najczęstszych błędów w content marketingu, które mogą sabotować Twoją strategię w 2025 roku.</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Artykuł 11 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post11.jpg" alt="Microcontet w marketingu">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Marketing</span>
+                                <h3 class="blog-title">Microcontent - jak tworzyć treści, które rozwiązują problemy na miejscu</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 3 marca 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>Zamiast oczekiwać, że użytkownik wejdzie na Twoją stronę po pełną treść, daj mu mikrokontent, który rozwiązuje problem na miejscu. To mogą być 15-sekundowe filmy czy mini infografiki.</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Artykuł 12 -->
+                        <article class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="img/blog-post12.jpg" alt="Obrazy w artykułach">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="blog-category">Content marketing</span>
+                                <h3 class="blog-title">Dlaczego artykuły z obrazami otrzymują o 555% więcej linków zwrotnych?</h3>
+                                <div class="blog-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> 25 lutego 2025</span>
+                                </div>
+                                <div class="blog-excerpt">
+                                    <p>Artykuły z co najmniej 7 obrazkami uzyskują o 555% więcej linków zwrotnych i 259% więcej unikatowych odsłon niż te bez obrazków. Jak skutecznie wykorzystać wizualizacje w swoich treściach?</p>
+                                </div>
+                                <a href="blog-post.html" class="btn btn-primary">Czytaj więcej</a>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <!-- Paginacja -->
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-sidebar">
+                    <!-- Popularne wpisy -->
+                    <div class="sidebar-widget">
+                        <h3>Popularne wpisy</h3>
+                        <div class="popular-post">
+                            <div class="popular-post-image">
+                                <img src="img/blog-post1-thumb.jpg" alt="Gadżety reklamowe w 2025 roku">
+                            </div>
+                            <div class="popular-post-content">
+                                <h4><a href="blog-post.html">Gadżety reklamowe w 2025 roku - trendy, które warto znać</a></h4>
+                                <p class="popular-post-date">10 maja 2025</p>
+                            </div>
+                        </div>
+                        <div class="popular-post">
+                            <div class="popular-post-image">
+                                <img src="img/blog-post7-thumb.jpg" alt="Jak wykorzystać AI w marketingu">
+                            </div>
+                            <div class="popular-post-content">
+                                <h4><a href="blog-post.html">Jak wykorzystać AI w marketingu - praktyczny przewodnik</a></h4>
+                                <p class="popular-post-date">2 kwietnia 2025</p>
+                            </div>
+                        </div>
+                        <div class="popular-post">
+                            <div class="popular-post-image">
+                                <img src="img/blog-post10-thumb.jpg" alt="Błędy w content marketingu">
+                            </div>
+                            <div class="popular-post-content">
+                                <h4><a href="blog-post.html">7 błędów w content marketingu, których należy unikać</a></h4>
+                                <p class="popular-post-date">10 marca 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA w sidebarze -->
+                    <div class="sidebar-widget" style="background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); color: var(--white-color);">
+                        <h3 style="color: var(--white-color); border-bottom-color: rgba(255,255,255,0.2);">Potrzebujesz wsparcia?</h3>
+                        <p style="margin-bottom: 20px;">Skontaktuj się z nami, aby omówić swoje potrzeby marketingowe i multimedialne. Oferujemy darmowe konsultacje!</p>
+                        <a href="index.html#kontakt" class="btn btn-white" style="width: 100%;">Skontaktuj się z nami</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h2>Zrealizujmy razem Twój projekt!</h2>
+                <p>Masz pomysł na projekt lub potrzebujesz profesjonalnego wsparcia w realizacji swoich celów marketingowych? Skontaktuj się z nami, aby omówić szczegóły i otrzymać indywidualną wycenę.</p>
+                <a href="index.html#kontakt" class="btn btn-white">Skontaktuj się z nami</a>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo-karot-white.svg" alt="KAROT" width="130" height="65"></a>
+                    <p>Kompleksowe usługi multimedialne dla firm, artystów i instytucji</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Szybkie linki</h3>
+                    <ul>
+                        <li><a href="index.html#o-firmie">O firmie</a></li>
+                        <li><a href="index.html#uslugi">Usługi</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#cennik">Cennik</a></li>
+                        <li><a href="index.html#opinie">Opinie</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Nasze usługi</h3>
+                    <ul>
+                        <li><a href="gadzety.html">Gadżety reklamowe</a></li>
+                        <li><a href="druk.html">Druk materiałów</a></li>
+                        <li><a href="tloczenie.html">Tłoczenie płyt</a></li>
+                        <li><a href="video.html">Produkcja wideo</a></li>
+                        <li><a href="marketing.html">Marketing AI</a></li>
+                        <li><a href="digitalizacja.html">Digitalizacja</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Zapisz się, aby otrzymywać najnowsze informacje i promocje</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Twój adres email" required>
+                        <button type="submit" class="btn btn-primary">Zapisz się</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 KAROT. Wszelkie prawa zastrzeżone.</p>
+                </div>
+                <div class="footer-legal">
+                    <ul>
+                        <li><a href="privacy.html">Polityka prywatności</a></li>
+                        <li><a href="terms.html">Regulamin</a></li>
+                        <li><a href="cookies.html">Polityka cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+        // Obsługa menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const mainNav = document.querySelector('.main-nav');
+            const navLinks = document.querySelectorAll('.main-nav ul li a');
+            
+            if (hamburger && mainNav) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    mainNav.classList.toggle('open');
+                    document.body.style.overflow = mainNav.classList.contains('open') ? 'hidden' : '';
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('open')) {
+                        hamburger.classList.remove('active');
+                        mainNav.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+            
+            // Obsługa przycisku powrotu do góry
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                
+                backToTopButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
